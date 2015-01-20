@@ -1,0 +1,19 @@
+<project name="Example" default="world">
+	<target name="hello">
+		<echo>Hello</echo>
+	</target>
+	
+	<target name="world" depends ="hello">
+		<echo>World!</echo>
+	</target>
+	
+	<phpunit haltonfailure="true" haltonerror="true" 
+		bootstrap="./tests/bootstrap.php" printsummary="true">
+		<batchtest>
+			<fileset dir="tests">
+				<include name="**/*Test.php"/>
+			</fileset>
+		</batchtest>
+	</phpunit>
+</project>
+	

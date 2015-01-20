@@ -1,0 +1,14 @@
+body {
+	background-color: #fdf;
+}
+.back {
+	background-color: #ddd;
+	margin-bottom: 1em;
+}
+code {
+	display: block;
+	background-color: #ffa; 
+	border: 1px dashed green;
+	white-space: pre;
+	margin-bottom: 1em; 
+}

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php": ">=5.3.0",
+		"phing/phing": ">=2",
+		"phpunit/phpunit": ">=4",
+		"twig/twig": "*"
+    }
+}
