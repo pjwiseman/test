@@ -33,9 +33,12 @@
 
 		<div ng-app="MyApp1">
 			<div ng-controller="BasicController">
-				<p>Name: <input type="text" ng-model="data.name"></p>
+				<p>Name: <input type="text" ng-model="data.name">
+					<button class="btn btn-primary" ng-click="click()">Click Me</button>
+				</p>
 				<p ng-bind="data.name"></p>
 				<p>{{data.name}}</p>
+				<pre>data = {{data | json}}</pre>			
 				
 				<div class="{{data.name}}">
 					<h1>Header</h1>
