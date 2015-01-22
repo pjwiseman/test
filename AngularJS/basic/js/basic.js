@@ -5,6 +5,9 @@ myApp.controller('BasicController', ['$window', '$scope', function($window, $sco
 	$scope.click = function() { $window.alert($scope.data.name); window.alert('test2'); };
 }]);
 
-function BasicController($scope){
-	$scope.data = {name: "World"};
-}
+myApp.filter('world', function() {
+	return function(text) {
+		return text + ' World';
+	}
+});
+
