@@ -1,18 +1,14 @@
 <!DOCTYPE html>
+<!-- AngularJS/basic -->
 <head>
 
+	<title>AngularJS Basic</title>
+	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<!-- Bootstrap theme -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-
-    <!-- Bootstrap Javascript -->
-    <script src="js/bootstrap.min.js"></script>
-
 
 </head>
 
@@ -37,7 +33,7 @@
 					<button class="btn btn-primary" ng-click="click()">Click Me</button>
 				</p>
 				<p ng-bind="data.name"></p>
-				<p>{{data.name}}</p>
+				<p>{{data.name | world}}</p>
 				<pre>data = {{data | json}}</pre>			
 				
 				<div class="{{data.name}}">
@@ -54,6 +50,12 @@
 		</div>
 	</div>
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="js/bootstrap.min.js"></script>
+
 	<!-- AngularJS -->
 	<script src="js/angular.min.js"></script>
 
@@ -61,3 +63,4 @@
 	<script src="js/basic.js"></script>
 
 </body>
+</html>
