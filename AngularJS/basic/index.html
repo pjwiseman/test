@@ -10,6 +10,9 @@
 	<!-- Bootstrap theme -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
+	<style>
+		.flag { border: solid 1px red; }
+	</style>
 </head>
 
 <body>
@@ -36,6 +39,7 @@
 				<p>{{data.name | world}}</p>
 				<pre>data = {{data | json}}</pre>
 				<superman></superman>
+				<div enter class="flag">flag superman</div>
 				
 				<div class="{{data.name}}">
 					<h1>Header</h1>
