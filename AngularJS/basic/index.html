@@ -32,9 +32,10 @@
 				<p>Name: <input type="text" ng-model="data.name">
 					<button class="btn btn-primary" ng-click="click()">Click Me</button>
 				</p>
-				<p ng-bind="data.name"></p>
+				<p ng-bind="data.name | world"></p>
 				<p>{{data.name | world}}</p>
-				<pre>data = {{data | json}}</pre>			
+				<pre>data = {{data | json}}</pre>
+				<superman></superman>
 				
 				<div class="{{data.name}}">
 					<h1>Header</h1>
