@@ -1,0 +1,12 @@
+task subOne {
+    group = 'Proj A'
+	description = 'Subtask One'
+}
+subOne << {
+    println("Running task $name")
+	println("Project dir $projectDir")
+}
+
+tasks.each { task ->
+	task.group = 'My Proj A'
+}

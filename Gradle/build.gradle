@@ -1,0 +1,181 @@
+// build.gradle
+//include sub1
+
+//***************************************************
+// projProp
+//***************************************************
+task projProp {
+    description = 'Shows some project properties'
+	project.group = 'abcd'
+}
+projProp << {
+	setGroup('My Project Group')
+
+	println "Project Properties"
+	println "=================="
+	println "project.buildDir = $project.buildDir"
+	println "project.group = $project.group"
+}
+
+//***************************************************
+// testDate
+//***************************************************
+task testDate {
+    description = 'Test dates'
+}
+testDate << {
+	println new Date().format('dd-mm-yyyy')		
+}
+
+//***************************************************
+// testOne
+//***************************************************
+task testOne {
+    description = 'Test one'
+    group = 'My Basic Tasks'
+}
+testOne << {
+    println('testone');
+}
+
+//***************************************************
+// testTwo
+//***************************************************
+task testTwo {
+    description = 'Test two'
+    group = 'My Basic Tasks'
+}
+testTwo << {
+    println('testtwo');
+}
+testTwo.dependsOn testOne
+
+//***************************************************
+// testThree
+//***************************************************
+task testThree {
+    description = 'Test three'
+}
+testThree << {
+    println('testthree');
+}
+testThree.dependsOn testTwo
+
+//***************************************************
+// testFile
+//***************************************************
+task testFile {
+    description = 'Test creation of a file. The file is created in the project directory.'
+}
+testFile << {
+    File file = new File('newfile')
+	file << 'test'
+}
+
+//***************************************************
+// testFileDelete
+//   Strangely this only works in the configuration phase
+//***************************************************
+task testFileDelete(type: Delete) {
+    description = 'Test deletion of a file. The file is deleted from the project directory.'
+}
+testFileDelete {
+    delete 'newfile'
+}
+
+//***************************************************
+// testGroup
+//***************************************************
+task testGroup {
+    description = 'Test the group override'
+	group = 'My Local Group'
+}
+
+//***************************************************
+// tasks generic
+//   This only works for any tasks defined at this point.
+//   It really needs to have a way to be run called after
+//   all tasks have been created.
+//   OR... the group assignment done another way, 
+//         perhaps a project default?
+//***************************************************
+tasks.each { task ->
+    if (!task.group) {
+		task.group = 'My Auto Group'
+	}
+}
+
+//***************************************************
+// testURL
+//***************************************************
+task testURL {
+    description = 'Test accessing a url'
+}
+testURL << {
+    String text = new URL('http://google.com').text
+	println text
+}
+
+//***************************************************
+// testCopy
+//***************************************************
+task testCopy(type:Copy) {
+    description = "Test copy"
+}
+testCopy {
+    from(file("test1"))
+	into(buildDir)
+}
+
+//***************************************************
+// testDelete
+//   Strangely this only works in the configuration phase
+// **************************************************
+task testDelete(type:Delete) {
+    description "Test delete"
+}
+testDelete {
+    delete "${project.buildDir}/test1"
+}
+
+//***************************************************
+// testFileDelete3
+// **************************************************
+task testFileDelete3 {
+    description "Test file delete"
+}
+testFileDelete3 {
+    file("test3").delete()
+}
+
+//***************************************************
+// deleteBuildDir
+// **************************************************
+task deleteBuildDir(type:Delete) {
+    description "Delete BuildDir"
+}
+deleteBuildDir {
+    delete "${project.buildDir}"
+}
+
+//***************************************************
+// clean   
+//***************************************************
+task clean(dependsOn: deleteBuildDir) {
+    description "Clean it all up"
+}
+clean.dependsOn testFileDelete
+
+//***************************************************
+// * Subproject sub1
+// **************************************************
+project(':sub1') {
+    task taskA {
+	    description = "Project sub1 Task A"
+		group = 'Proj A'
+	}
+	taskA << {
+	    println("Project name $project.name")
+		println("Running task $name")
+	}
+}
