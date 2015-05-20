@@ -93,16 +93,19 @@ task testGroup {
 
 //***************************************************
 // tasks generic
-//   This only works for any tasks defined at this point.
-//   It really needs to have a way to be run called after
-//   all tasks have been created.
-//   OR... the group assignment done another way, 
-//         perhaps a project default?
+//   tasks.each only works for any tasks defined at this point.
+//   tasks.withType works for all tasks
 //***************************************************
 tasks.each { task ->
     if (!task.group) {
 		task.group = 'My Auto Group'
 	}
+}
+
+tasks.withType(Delete) { task ->
+    if (!task.group) {
+        task.group = 'My New Auto group'
+    }
 }
 
 //***************************************************
