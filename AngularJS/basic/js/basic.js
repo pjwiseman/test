@@ -1,4 +1,6 @@
-var app = angular.module('MyApp1', []);
+var myModule = angular.module('MyModule', []);
+
+var app = angular.module('MyApp1', ['MyModule']);
 
 app.factory('Data', function() {
 	return {word1: 'Crikey ', word2: 'Croc' };
