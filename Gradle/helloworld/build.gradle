@@ -1,0 +1,9 @@
+// helloworld/build.gradle
+
+apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'helloworld.HelloWorld'
+    }
+}
